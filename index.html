@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>For My Queen Alishba ❤️</title>
-    <!-- Premium Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Playfair+Display:ital,wght@0,400;1,700&family=Poppins:wght@200;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Playfair+Display:ital,wght@0,400;1,700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary: #ff4d6d;
@@ -21,14 +20,16 @@
             background-color: var(--bg);
             color: white;
             font-family: 'Poppins', sans-serif;
+            /* Initially hidden to prevent scrolling before the heart is clicked */
             overflow: hidden; 
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
         }
 
-        /* --- Advanced Moving Background --- */
+        /* --- Background --- */
         .bg-glow {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -36,20 +37,14 @@
                 radial-gradient(circle at 20% 30%, #2c020a 0%, transparent 40%),
                 radial-gradient(circle at 80% 70%, #1a0110 0%, transparent 40%);
             z-index: -1;
-            animation: pulseBg 10s ease-in-out infinite alternate;
         }
 
-        @keyframes pulseBg {
-            0% { transform: scale(1); }
-            100% { transform: scale(1.1); }
-        }
-
-        /* --- Interactive Reveal Button --- */
+        /* --- Reveal Heart --- */
         #reveal-btn {
             cursor: pointer;
             z-index: 100;
             text-align: center;
-            transition: all 0.5s ease;
+            transition: 0.5s;
         }
 
         .main-heart {
@@ -64,21 +59,12 @@
             50% { transform: scale(1.2); }
         }
 
-        .tap-text {
-            margin-top: 15px;
-            font-size: 0.8rem;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            opacity: 0.6;
-        }
-
-        /* --- The Advanced Content Card --- */
-        .content-wrapper {
+        /* --- Content Card (Fixed Scrolling) --- */
+        #content {
             display: none;
-            position: relative;
             width: 90%;
             max-width: 500px;
-            max-height: 85vh; /* Prevents card from going off screen */
+            padding: 40px 0; /* Space at top and bottom for scrolling */
             z-index: 10;
         }
 
@@ -88,60 +74,47 @@
             -webkit-backdrop-filter: blur(25px);
             border: 1px solid var(--border);
             border-radius: 40px;
-            padding: 40px 30px;
+            padding: 40px 25px;
             box-shadow: 0 40px 100px rgba(0,0,0,0.8);
             text-align: center;
-            transform: translateY(50px);
             opacity: 0;
-            transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
-            overflow-y: auto; /* Allows scrolling if text is long */
+            transform: translateY(30px);
+            transition: all 1s ease;
         }
 
-        /* Custom Scrollbar for the card */
-        .glass-card::-webkit-scrollbar { width: 5px; }
-        .glass-card::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 10px; }
-
-        .content-wrapper.active .glass-card {
-            transform: translateY(0);
+        #content.active .glass-card {
             opacity: 1;
+            transform: translateY(0);
         }
 
         h1 {
             font-family: 'Dancing Script', cursive;
             font-size: 3rem;
-            margin-bottom: 25px;
-            background: linear-gradient(to right, #fff, var(--secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            margin-bottom: 30px;
+            color: var(--primary);
         }
 
         .romantic-text {
             font-family: 'Playfair Display', serif;
-            font-size: 1.05rem;
+            font-size: 1.1rem;
             line-height: 1.8;
             color: #efefef;
             font-style: italic;
-            margin-bottom: 20px;
-            text-align: center;
+            margin-bottom: 25px;
         }
 
-        .romantic-text b { color: var(--primary); font-weight: 700; }
-
-        .btn-close {
-            margin-top: 10px;
+        .btn-restart {
+            margin-top: 20px;
             background: transparent;
             border: 1px solid var(--primary);
             color: var(--primary);
-            padding: 10px 30px;
+            padding: 12px 30px;
             border-radius: 100px;
             cursor: pointer;
-            transition: 0.3s;
             font-size: 0.9rem;
         }
 
-        .btn-close:hover { background: var(--primary); color: white; }
-
-        #canvas {
+        canvas {
             position: fixed;
             top: 0; left: 0;
             pointer-events: none;
@@ -154,14 +127,14 @@
     <div class="bg-glow"></div>
     <canvas id="canvas"></canvas>
 
-    <!-- Phase 1: The Heart Trigger -->
+    <!-- Phase 1 -->
     <div id="reveal-btn" onclick="revealMessage()">
         <div class="main-heart">❤️</div>
-        <p class="tap-text">For Alishba<br>Tap to Open My Heart</p>
+        <p style="margin-top:15px; letter-spacing:3px; opacity:0.6;">TAP TO OPEN</p>
     </div>
 
-    <!-- Phase 2: The Letter -->
-    <div class="content-wrapper" id="content">
+    <!-- Phase 2 -->
+    <div id="content">
         <div class="glass-card">
             <h1>My Alishba</h1>
             
@@ -170,76 +143,53 @@
             </p>
 
             <p class="romantic-text">
-                "In a world that can often feel loud and overwhelming, you are my quiet place. Your laughter is the most beautiful sound I’ve ever heard, and your support is the anchor that keeps me grounded. You believe in me even when I forget to believe in myself, and for that, I am eternally grateful."
+                "In a world that can often feel loud and overwhelming, you are my quiet place. Your laughter is the most beautiful sound I’ve ever heard, and your support is the anchor that keeps me grounded. You believe in me even when I forget to believe in myself."
             </p>
 
             <p class="romantic-text">
-                "I look at our journey and I see more than just memories; I see a story of two souls becoming one. Every challenge we’ve faced has only made us stronger, and every joy we’ve shared has made life worth living. You are my peace, my strength, and my greatest adventure."
+                "I look at our journey and I see more than just memories; I see a story of two souls becoming one. Every challenge we’ve faced has only made us stronger, and every joy we’ve shared has made life worth living. You are my peace and my greatest adventure."
             </p>
 
             <p class="romantic-text">
-                "As we celebrate this anniversary, my promise to you remains the same: I will choose you every single day. I promise to be your biggest fan, your toughest protector, and your most devoted lover. Our story is my favorite, and I can't wait to see what the next chapters hold for us. <br><b>Happy Anniversary, My Queen.</b>"
+                "I promise to choose you every single day. I promise to be your biggest fan, your protector, and your home. Our story is my favorite, and I can't wait for our future. <br><br><b>Happy Anniversary, My Queen.</b>"
             </p>
 
-            <button class="btn-close" onclick="location.reload()">See You Again ❤️</button>
+            <button class="btn-restart" onclick="window.scrollTo(0,0); location.reload();">Back to Top ❤️</button>
         </div>
     </div>
 
     <script>
         function revealMessage() {
+            // 1. Hide the heart
             document.getElementById('reveal-btn').style.display = 'none';
+            
+            // 2. Show the content
             const content = document.getElementById('content');
             content.style.display = 'block';
+            
+            // 3. ENABLE SCROLLING on the whole page
+            document.body.style.overflowY = 'auto';
+            document.body.style.height = 'auto';
+            
             setTimeout(() => {
                 content.classList.add('active');
-            }, 100);
+            }, 50);
+            
             startParticles();
         }
 
+        // --- Particle System ---
         const canvas = document.getElementById('canvas');
         const ctx = canvas.getContext('2d');
         let particles = [];
-
-        function resize() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        }
-
+        function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
         class Particle {
-            constructor() {
-                this.x = Math.random() * canvas.width;
-                this.y = Math.random() * canvas.height;
-                this.size = Math.random() * 2 + 0.5;
-                this.speedY = Math.random() * -1 - 0.5;
-                this.opacity = Math.random() * 0.5 + 0.2;
-            }
-            update() {
-                this.y += this.speedY;
-                if (this.y < 0) this.y = canvas.height;
-            }
-            draw() {
-                ctx.fillStyle = `rgba(255, 77, 109, ${this.opacity})`;
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fill();
-            }
+            constructor() { this.x = Math.random() * canvas.width; this.y = Math.random() * canvas.height; this.size = Math.random() * 2 + 0.5; this.speedY = Math.random() * -1 - 0.5; this.opacity = Math.random() * 0.5 + 0.2; }
+            update() { this.y += this.speedY; if (this.y < 0) this.y = canvas.height; }
+            draw() { ctx.fillStyle = `rgba(255, 77, 109, ${this.opacity})`; ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2); ctx.fill(); }
         }
-
-        function startParticles() {
-            resize();
-            for(let i=0; i<80; i++) particles.push(new Particle());
-            animate();
-        }
-
-        function animate() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            particles.forEach(p => {
-                p.update();
-                p.draw();
-            });
-            requestAnimationFrame(animate);
-        }
-
+        function startParticles() { resize(); for(let i=0; i<60; i++) particles.push(new Particle()); animate(); }
+        function animate() { ctx.clearRect(0, 0, canvas.width, canvas.height); particles.forEach(p => { p.update(); p.draw(); }); requestAnimationFrame(animate); }
         window.addEventListener('resize', resize);
     </script>
 </body>
