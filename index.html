@@ -1,1 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Anniversary Alishba ❤️</title>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-pink: #ff4d6d;
+            --secondary-pink: #ff85a1;
+            --dark-pink: #c9184a;
+            --glass-bg: rgba(255, 255, 255, 0.15);
+            --text-color: #fff;
+        }
 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1a1a1a, #4a0e0e);
+            overflow-x: hidden;
+            color: var(--text-color);
+            min-height: 200vh;
+        }
+
+        /* --- Floating Hearts Background --- */
+        #heart-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .heart-particle {
+            position: absolute;
+            color: var(--primary-pink);
+            animation: float 10s linear infinite;
+            opacity: 0.6;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(100vh) scale(0); opacity: 0; }
+            50% { opacity: 0.8; }
+            100% { transform: translateY(-10vh) scale(1.5); opacity: 0; }
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            text-align: center;
+            z-index: 1;
+            position: relative;
+        }
+
+        /* Glassmorphism Card */
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            max-width: 600px;
+            animation: fadeInDown 1.5s ease-out;
+        }
+
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, #ff4d6d, #ffb3c1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .countdown {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        .time-box {
+            background: rgba(255, 77, 109, 0.2);
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-weight: 600;
+        }
+
+        /* --- 3D Gallery Section --- */
+        .gallery-section {
+            height: 100vh;
+            perspective: 1000px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .carousel {
+            width: 250px;
+            height: 350px;
+            position: relative;
+            transform-style: preserve-3d;
+            animation: rotate 20s infinite linear;
+        }
+
+        .carousel:hover {
+            animation-play-state: paused;
+        }
+
+        .carousel-item {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 15px;
+            overflow: hidden;
+            border: 3px solid var(--secondary-pink);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+        }
+
+        .carousel-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Positioning 6 images in a circle */
+        .carousel-item:nth-child(1) { transform: rotateY(0deg) translateZ(350px); }
+        .carousel-item:nth-child(2) { transform: rotateY(60deg) translateZ(350px); }
+        .carousel-item:nth-child(3) { transform: rotateY(120deg) translateZ(350px); }
+        .carousel-item:nth-child(4) { transform: rotateY(180deg) translateZ(350px); }
+        .carousel-item:nth-child(5) { transform: rotateY(240deg) translateZ(350px); }
+        .carousel-item:nth-child(6) { transform: rotateY(300deg) translateZ(350px); }
+
+        @keyframes rotate {
+            from { transform: rotateY(0deg); }
+            to { transform: rotateY(360deg); }
+        }
+
+        /* --- Footer Love Message --- */
+        .footer-message {
+            padding: 5rem 2rem;
+            text-align: center;
+            background: rgba(0,0,0,0.5);
+        }
+
+        .typewriter {
+            font-size: 1.5rem;
+            border-right: 2px solid var(--primary-pink);
+            white-space: nowrap;
+            overflow: hidden;
+            width: 0;
+            margin: 0 auto;
+            animation: typing 4s steps(40) forwards, blink 0.75s infinite;
+        }
+
+        @keyframes typing { from { width: 0 } to { width: 100% } }
+        @keyframes blink { from { border-color: transparent } to { border-color: var(--primary-pink) } }
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div id="heart-container"></div>
+
+    <section class="hero">
+        <div class="glass-card">
+            <h1>To My Alishba</h1>
+            <p>Every moment with you is a beautiful dream come true.</p>
+            <p style="font-style: italic; margin-top: 10px;">Happy Anniversary, my love!</p>
+            
+            <div class="countdown" id="timer">
+                <div class="time-box"><span id="days">00</span><br>Days</div>
+                <div class="time-box"><span id="hours">00</span><br>Hrs</div>
+                <div class="time-box"><span id="mins">00</span><br>Mins</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="gallery-section">
+        <div class="carousel">
+            <!-- Replace these URLs with your real photos -->
+            <div class="carousel-item"><img src="https://images.unsplash.com/photo-1518199266791-5375a83190b7?auto=format&fit=crop&w=400&q=80" alt="Memory 1"></div>
+            <div class="carousel-item"><img src="https://images.unsplash.com/photo-1523438885200-e635ba2c371e?auto=format&fit=crop&w=400&q=80" alt="Memory 2"></div>
+            <div class="carousel-item"><img src="https://images.unsplash.com/photo-1516589174184-c68526514800?auto=format&fit=crop&w=400&q=80" alt="Memory 3"></div>
+            <div class="carousel-item"><img src="https://images.unsplash.com/photo-1511739001486-6bfe10ce785f?auto=format&fit=crop&w=400&q=80" alt="Memory 4"></div>
+            <div class="carousel-item"><img src="https://images.unsplash.com/photo-1494774139091-9e1f5ba4e5b4?auto=format&fit=crop&w=400&q=80" alt="Memory 5"></div>
+            <div class="carousel-item"><img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=400&q=80" alt="Memory 6"></div>
+        </div>
+    </section>
+
+    <div class="footer-message">
+        <p class="typewriter">I promise to love you forever and always, Alishba...</p>
+    </div>
+
+    <script>
+        // 1. Create Floating Hearts
+        function createHearts() {
+            const container = document.getElementById('heart-container');
+            for (let i = 0; i < 30; i++) {
+                const heart = document.createElement('div');
+                heart.innerHTML = '❤️';
+                heart.classList.add('heart-particle');
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.animationDelay = Math.random() * 5 + 's';
+                heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
+                container.appendChild(heart);
+            }
+        }
+        createHearts();
+
+        // 2. Anniversary Countdown (Set your date here!)
+        const anniversaryDate = new Date("2024-12-31T00:00:00").getTime(); // <--- CHANGE THIS DATE
+
+        setInterval(() => {
+            const now = new Date().getTime();
+            const distance = anniversaryDate - now;
+
+            const d = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const h = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const m = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+
+            document.getElementById('days').innerText = d < 0 ? 0 : d;
+            document.getElementById('hours').innerText = h < 0 ? 0 : h;
+            document.getElementById('mins').innerText = m < 0 ? 0 : m;
+        }, 1000);
+    </script>
+</body>
+</html>
