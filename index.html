@@ -3,246 +3,242 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Anniversary Alishba ❤️</title>
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>For My Dearest Alishba ❤️</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-pink: #ff4d6d;
-            --secondary-pink: #ff85a1;
-            --dark-pink: #c9184a;
-            --glass-bg: rgba(255, 255, 255, 0.15);
-            --text-color: #fff;
+            --bg-dark: #0a0a0c;
+            --accent-rose: #ff4d6d;
+            --accent-glow: rgba(255, 77, 109, 0.4);
+            --glass: rgba(255, 255, 255, 0.03);
+            --border: rgba(255, 255, 255, 0.1);
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Outfit', sans-serif;
+            scroll-behavior: smooth;
         }
 
         body {
-            background: linear-gradient(135deg, #1a1a1a, #4a0e0e);
+            background-color: var(--bg-dark);
+            color: #fff;
             overflow-x: hidden;
-            color: var(--text-color);
-            min-height: 200vh;
         }
 
-        /* --- Floating Hearts Background --- */
-        #heart-container {
+        /* Animated Background Hearts */
+        #bg-canvas {
             position: fixed;
             top: 0;
             left: 0;
+            z-index: -1;
             width: 100%;
             height: 100%;
             pointer-events: none;
-            z-index: 0;
         }
 
-        .heart-particle {
-            position: absolute;
-            color: var(--primary-pink);
-            animation: float 10s linear infinite;
-            opacity: 0.6;
-        }
-
-        @keyframes float {
-            0% { transform: translateY(100vh) scale(0); opacity: 0; }
-            50% { opacity: 0.8; }
-            100% { transform: translateY(-10vh) scale(1.5); opacity: 0; }
-        }
-
-        /* --- Hero Section --- */
+        /* --- HERO SECTION --- */
         .hero {
             height: 100vh;
             display: flex;
-            align-items: center;
-            justify-content: center;
             flex-direction: column;
+            justify-content: center;
+            align-items: center;
             text-align: center;
-            z-index: 1;
-            position: relative;
+            background: radial-gradient(circle at center, #1a0b0e 0%, #0a0a0c 100%);
         }
 
-        /* Glassmorphism Card */
-        .glass-card {
-            background: var(--glass-bg);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            padding: 3rem;
-            border-radius: 20px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-            max-width: 600px;
-            animation: fadeInDown 1.5s ease-out;
-        }
-
-        h1 {
+        .hero h1 {
             font-family: 'Dancing Script', cursive;
-            font-size: 4rem;
-            margin-bottom: 1rem;
-            background: linear-gradient(to right, #ff4d6d, #ffb3c1);
+            font-size: clamp(3rem, 10vw, 6rem);
+            background: linear-gradient(to bottom, #fff, var(--accent-rose));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+            animation: fadeIn 2s ease-out;
         }
 
-        .countdown {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            margin-top: 2rem;
-        }
-
-        .time-box {
-            background: rgba(255, 77, 109, 0.2);
-            padding: 10px 20px;
-            border-radius: 10px;
-            font-weight: 600;
-        }
-
-        /* --- 3D Gallery Section --- */
-        .gallery-section {
-            height: 100vh;
-            perspective: 1000px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-        }
-
-        .carousel {
-            width: 250px;
-            height: 350px;
-            position: relative;
-            transform-style: preserve-3d;
-            animation: rotate 20s infinite linear;
-        }
-
-        .carousel:hover {
-            animation-play-state: paused;
-        }
-
-        .carousel-item {
+        .scroll-indicator {
             position: absolute;
-            width: 100%;
-            height: 100%;
-            border-radius: 15px;
-            overflow: hidden;
-            border: 3px solid var(--secondary-pink);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+            bottom: 30px;
+            animation: bounce 2s infinite;
+            font-size: 0.9rem;
+            color: var(--accent-rose);
+            letter-spacing: 2px;
         }
 
-        .carousel-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        /* Positioning 6 images in a circle */
-        .carousel-item:nth-child(1) { transform: rotateY(0deg) translateZ(350px); }
-        .carousel-item:nth-child(2) { transform: rotateY(60deg) translateZ(350px); }
-        .carousel-item:nth-child(3) { transform: rotateY(120deg) translateZ(350px); }
-        .carousel-item:nth-child(4) { transform: rotateY(180deg) translateZ(350px); }
-        .carousel-item:nth-child(5) { transform: rotateY(240deg) translateZ(350px); }
-        .carousel-item:nth-child(6) { transform: rotateY(300deg) translateZ(350px); }
-
-        @keyframes rotate {
-            from { transform: rotateY(0deg); }
-            to { transform: rotateY(360deg); }
-        }
-
-        /* --- Footer Love Message --- */
-        .footer-message {
-            padding: 5rem 2rem;
-            text-align: center;
-            background: rgba(0,0,0,0.5);
-        }
-
-        .typewriter {
-            font-size: 1.5rem;
-            border-right: 2px solid var(--primary-pink);
-            white-space: nowrap;
-            overflow: hidden;
-            width: 0;
+        /* --- BENTO GRID SECTION --- */
+        .container {
+            max-width: 1100px;
             margin: 0 auto;
-            animation: typing 4s steps(40) forwards, blink 0.75s infinite;
+            padding: 80px 20px;
         }
 
-        @keyframes typing { from { width: 0 } to { width: 100% } }
-        @keyframes blink { from { border-color: transparent } to { border-color: var(--primary-pink) } }
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-50px); }
-            to { opacity: 1; transform: translateY(0); }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-auto-rows: 200px;
+            gap: 20px;
         }
 
+        .bento-item {
+            background: var(--glass);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            backdrop-filter: blur(10px);
+            transition: transform 0.4s ease, border-color 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .bento-item:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-rose);
+            box-shadow: 0 10px 30px var(--accent-glow);
+        }
+
+        .item-1 { grid-column: span 2; grid-row: span 2; } /* Large Message */
+        .item-2 { grid-column: span 2; grid-row: span 1; } /* Sub Message */
+        .item-3 { grid-column: span 1; grid-row: span 2; } /* Vertical Photo Place */
+        .item-4 { grid-column: span 1; grid-row: span 1; }
+        .item-5 { grid-column: span 2; grid-row: span 1; }
+
+        .bento-item h2 {
+            font-family: 'Dancing Script', cursive;
+            color: var(--accent-rose);
+            margin-bottom: 15px;
+            font-size: 2rem;
+        }
+
+        .bento-item p {
+            line-height: 1.6;
+            font-size: 1rem;
+            color: #ccc;
+        }
+
+        /* --- ROMANTIC PARAGRAPHS --- */
+        .romantic-text {
+            font-weight: 300;
+            font-style: italic;
+        }
+
+        /* --- ANIMATIONS --- */
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes bounce { 0%, 20%, 50%, 80%, 100% {transform: translateY(0);} 40% {transform: translateY(-10px);} 60% {transform: translateY(-5px);} }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .bento-grid { grid-template-columns: repeat(2, 1fr); }
+            .item-1, .item-2, .item-3, .item-4, .item-5 { grid-column: span 2; }
+        }
     </style>
 </head>
 <body>
 
-    <div id="heart-container"></div>
+    <canvas id="bg-canvas"></canvas>
 
     <section class="hero">
-        <div class="glass-card">
-            <h1>To My Alishba</h1>
-            <p>Every moment with you is a beautiful dream come true.</p>
-            <p style="font-style: italic; margin-top: 10px;">Happy Anniversary, my love!</p>
+        <h1>Happy Anniversary, Alishba</h1>
+        <p style="letter-spacing: 4px; opacity: 0.8;">OUR BEAUTIFUL JOURNEY CONTINUES</p>
+        <div class="scroll-indicator">SCROLL TO READ MY HEART</div>
+    </section>
+
+    <div class="container">
+        <div class="bento-grid">
             
-            <div class="countdown" id="timer">
-                <div class="time-box"><span id="days">00</span><br>Days</div>
-                <div class="time-box"><span id="hours">00</span><br>Hrs</div>
-                <div class="time-box"><span id="mins">00</span><br>Mins</div>
+            <!-- Paragraph 1 -->
+            <div class="bento-item item-1">
+                <h2>My Soulmate</h2>
+                <p class="romantic-text">
+                    Alishba, looking back at our journey, I realize that every single day spent with you has been a blessing. You aren't just my girlfriend; you are the peace I find after a long day and the excitement I feel for every tomorrow. I am so lucky to walk through life with you, hand in hand, knowing that no matter what happens, I have you by my side.
+                </p>
             </div>
-        </div>
-    </section>
 
-    <section class="gallery-section">
-        <div class="carousel">
-            <!-- Replace these URLs with your real photos -->
-            <div class="carousel-item"><img src="https://images.unsplash.com/photo-1518199266791-5375a83190b7?auto=format&fit=crop&w=400&q=80" alt="Memory 1"></div>
-            <div class="carousel-item"><img src="https://images.unsplash.com/photo-1523438885200-e635ba2c371e?auto=format&fit=crop&w=400&q=80" alt="Memory 2"></div>
-            <div class="carousel-item"><img src="https://images.unsplash.com/photo-1516589174184-c68526514800?auto=format&fit=crop&w=400&q=80" alt="Memory 3"></div>
-            <div class="carousel-item"><img src="https://images.unsplash.com/photo-1511739001486-6bfe10ce785f?auto=format&fit=crop&w=400&q=80" alt="Memory 4"></div>
-            <div class="carousel-item"><img src="https://images.unsplash.com/photo-1494774139091-9e1f5ba4e5b4?auto=format&fit=crop&w=400&q=80" alt="Memory 5"></div>
-            <div class="carousel-item"><img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=400&q=80" alt="Memory 6"></div>
-        </div>
-    </section>
+            <!-- Paragraph 2 -->
+            <div class="bento-item item-2">
+                <h2>The Way You Are</h2>
+                <p class="romantic-text">
+                    It’s the little things about you, Alishba—the way your eyes light up when you're happy and how you make everything around you feel more alive. You have this incredible way of making me feel like the luckiest person on earth just by being yourself.
+                </p>
+            </div>
 
-    <div class="footer-message">
-        <p class="typewriter">I promise to love you forever and always, Alishba...</p>
+            <div class="bento-item item-4" style="text-align: center;">
+                <h2 style="font-size: 3rem;">365</h2>
+                <p>Days of Pure Love</p>
+            </div>
+
+            <div class="bento-item item-3" style="background: url('https://via.placeholder.com/400x800') center/cover;">
+                <!-- Tip: Put your favorite photo of her here -->
+            </div>
+
+            <!-- Paragraph 3 -->
+            <div class="bento-item item-5">
+                <h2>My Forever Promise</h2>
+                <p class="romantic-text">
+                    As we celebrate another year, my promise to you remains the same: I will choose you every single day. I promise to love you through the laughter and the quiet moments, and to keep building a world where your smile is the brightest thing in it. Happy Anniversary, Alishba.
+                </p>
+            </div>
+
+        </div>
     </div>
 
     <script>
-        // 1. Create Floating Hearts
-        function createHearts() {
-            const container = document.getElementById('heart-container');
-            for (let i = 0; i < 30; i++) {
-                const heart = document.createElement('div');
-                heart.innerHTML = '❤️';
-                heart.classList.add('heart-particle');
-                heart.style.left = Math.random() * 100 + 'vw';
-                heart.style.animationDelay = Math.random() * 5 + 's';
-                heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
-                container.appendChild(heart);
+        // Interactive Heart Background
+        const canvas = document.getElementById('bg-canvas');
+        const ctx = canvas.getContext('2d');
+        let hearts = [];
+
+        function resize() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+
+        class Heart {
+            constructor() {
+                this.reset();
+            }
+            reset() {
+                this.x = Math.random() * canvas.width;
+                this.y = canvas.height + 20;
+                this.size = Math.random() * 15 + 5;
+                this.speed = Math.random() * 1.5 + 0.5;
+                this.opacity = Math.random() * 0.5;
+            }
+            update() {
+                this.y -= this.speed;
+                if (this.y < -20) this.reset();
+            }
+            draw() {
+                ctx.fillStyle = `rgba(255, 77, 109, ${this.opacity})`;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
             }
         }
-        createHearts();
 
-        // 2. Anniversary Countdown (Set your date here!)
-        const anniversaryDate = new Date("2024-12-31T00:00:00").getTime(); // <--- CHANGE THIS DATE
+        function init() {
+            resize();
+            for (let i = 0; i < 50; i++) hearts.push(new Heart());
+            animate();
+        }
 
-        setInterval(() => {
-            const now = new Date().getTime();
-            const distance = anniversaryDate - now;
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            hearts.forEach(h => {
+                h.update();
+                h.draw();
+            });
+            requestAnimationFrame(animate);
+        }
 
-            const d = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const h = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const m = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-
-            document.getElementById('days').innerText = d < 0 ? 0 : d;
-            document.getElementById('hours').innerText = h < 0 ? 0 : h;
-            document.getElementById('mins').innerText = m < 0 ? 0 : m;
-        }, 1000);
+        window.addEventListener('resize', resize);
+        init();
     </script>
 </body>
 </html>
